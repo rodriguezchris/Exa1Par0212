@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
             String path = registroController.startRecording();
             if (path != null) {
                 isRecording = true;
-                btnGrabar.setText("⏹ Detener Grabación");
+                btnGrabar.setText("⏹\nDetener");
                 startTime = System.currentTimeMillis();
                 timerHandler.postDelayed(timerRunnable, 0);
                 Toast.makeText(this, "Grabando nota de voz...", Toast.LENGTH_SHORT).show();
@@ -139,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             registroController.stopRecording();
             isRecording = false;
-            btnGrabar.setText("🔴 Grabar");
+            btnGrabar.setText("🎙️\nGrabar");
             timerHandler.removeCallbacks(timerRunnable);
             tvTimer.setText("00:00");
             Toast.makeText(this, "Nota de voz guardada temporalmente", Toast.LENGTH_SHORT).show();
@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
         etFecha.setText("");
         etDescripcion.setText("");
         registroController.setCurrentAudioPath(null);
-        btnGrabar.setText("🔴 Grabar");
+        btnGrabar.setText("🎙️\nGrabar");
     }
 
     @Override

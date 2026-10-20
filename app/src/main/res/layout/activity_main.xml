@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +13,6 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Parte superior: UTH en verde y mayúscula, y contador de tiempo -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
             android:textSize="28sp"
             android:textStyle="bold"
             android:textColor="#2E7D32"
-            android:layout_marginBottom="4dp" />
+            android:layout_marginBottom="2dp" />
 
         <TextView
             android:id="@+id/tvTimer"
@@ -29,32 +29,41 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="00:00"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#555555"
             android:layout_marginBottom="12dp" />
 
-        <!-- Botones Grabar y Reproducir arriba -->
+        <!-- Botones Grabar (rojo) y Reproducir (negro) circulares con MaterialButton -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="20dp">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGrabar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="🎙️" />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:cornerRadius="40dp"
+                android:backgroundTint="#E53935"
+                android:gravity="center"
+                android:text="🎙️\nGrabar"
+                android:textSize="11sp"
+                android:textColor="@android:color/white" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReproducirGrabacion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_weight="1"
-                android:text="▶ " />
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginStart="32dp"
+                app:cornerRadius="40dp"
+                android:backgroundTint="#212121"
+                android:gravity="center"
+                android:text="▶\nReproducir"
+                android:textSize="11sp"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <!-- Asignatura -->
@@ -74,15 +83,17 @@
                 android:id="@+id/spinnerAsignatura"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:background="@drawable/bg_rounded_input" />
 
             <Button
                 android:id="@+id/btnAgregarAsignatura"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:backgroundTint="#EB3F18"
                 android:text="+ Asignatura"
-                android:textSize="12sp"
-                android:layout_marginStart="8dp" />
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Tema -->
@@ -95,10 +106,12 @@
         <EditText
             android:id="@+id/etTema"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bg_rounded_input"
             android:hint="Ej. Ciclo de vida de una Activity"
             android:inputType="text"
-            android:layout_marginBottom="12dp" />
+            android:textSize="14sp" />
 
         <!-- Fecha -->
         <TextView
@@ -110,9 +123,11 @@
         <EditText
             android:id="@+id/etFecha"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_rounded_input"
             android:hint="2026-10-17"
             android:inputType="date"
+            android:textSize="14sp"
             android:layout_marginBottom="12dp" />
 
         <!-- Descripción -->
@@ -125,10 +140,12 @@
         <EditText
             android:id="@+id/etDescripcion"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
+            android:background="@drawable/bg_rounded_input"
             android:gravity="top|start"
             android:hint="Escribe o dicta la descripción..."
             android:inputType="textMultiLine"
+            android:textSize="14sp"
             android:layout_marginBottom="8dp" />
 
         <!-- Dictar -->
@@ -136,23 +153,27 @@
             android:id="@+id/btnDictar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="🎤 Dictar Descripción por Voz"
-            android:layout_marginBottom="16dp" />
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#EB3F18"
+            android:text="Dicta Descripción por Voz" />
 
-        <!-- Botones de Acción -->
+        <!-- Botones de Acción: Salvar Apunte (verde), Ver Apuntes (azul) -->
         <Button
             android:id="@+id/btnSalvarApunte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar Apunte"
-            android:backgroundTint="@color/material_dynamic_primary50"
+            android:backgroundTint="#2E7D32"
+            android:textColor="@android:color/white"
             android:layout_marginBottom="8dp" />
 
         <Button
             android:id="@+id/btnVerApuntes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Ver Apuntes" />
+            android:text="Ver Apuntes"
+            android:backgroundTint="#1976D2"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 </ScrollView>
