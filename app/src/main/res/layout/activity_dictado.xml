@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    tools:context=".view.DictadoActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="DICTADO POR RECONOCIMIENTO DE VOZ"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp" />
+
+    <TextView
+        android:id="@+id/tvResultadoDictado"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:text="Presiona el botón e inicia el dictado..."
+        android:textSize="16sp"
+        android:background="#F0F0F0"
+        android:padding="16dp"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnIniciarDictado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎤 Iniciar Dictado"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnAceptarDictado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aceptar y Usar Texto"
+        android:backgroundTint="@color/material_dynamic_primary50" />
+
+</LinearLayout>
