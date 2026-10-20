@@ -38,28 +38,31 @@
         <Button
             android:id="@+id/btnReproducirItem"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#EB3F18"
             android:text="▶ Audio"
             android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnEditarItem"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="✏️ Editar"
-            android:textSize="12sp"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#EB3F18"
+            android:text="Editar"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnEliminarItem"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="🗑 Eliminar"
-            android:textSize="12sp"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:backgroundTint="#EB3F18"
+            android:text="Eliminar"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

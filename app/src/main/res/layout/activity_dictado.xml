@@ -32,15 +32,17 @@
         android:id="@+id/btnIniciarDictado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="🎤 Iniciar Dictado"
-        android:textSize="16sp"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="#EB3F18"
+        android:text="Iniciar Dictado"
+        android:textSize="16sp" />
 
     <Button
         android:id="@+id/btnAceptarDictado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aceptar y Usar Texto"
-        android:backgroundTint="@color/material_dynamic_primary50" />
+        android:backgroundTint="#082764"
+        android:text="Guardar Descripcion"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>
