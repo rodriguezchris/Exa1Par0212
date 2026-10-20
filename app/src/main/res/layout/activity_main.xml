@@ -12,15 +12,52 @@
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Parte superior: UTH en verde y mayúscula, y contador de tiempo -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="REGISTRO DE APUNTES"
-            android:textSize="20sp"
+            android:text="UTH"
+            android:textSize="28sp"
             android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+            android:textColor="#2E7D32"
+            android:layout_marginBottom="4dp" />
 
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="00:00"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#555555"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Botones Grabar y Reproducir arriba -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnGrabar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="🎙️" />
+
+            <Button
+                android:id="@+id/btnReproducirGrabacion"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="▶ " />
+        </LinearLayout>
+
+        <!-- Asignatura -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -48,6 +85,7 @@
                 android:layout_marginStart="8dp" />
         </LinearLayout>
 
+        <!-- Tema -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,6 +100,7 @@
             android:inputType="text"
             android:layout_marginBottom="12dp" />
 
+        <!-- Fecha -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,6 +115,7 @@
             android:inputType="date"
             android:layout_marginBottom="12dp" />
 
+        <!-- Descripción -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -91,41 +131,15 @@
             android:inputType="textMultiLine"
             android:layout_marginBottom="8dp" />
 
+        <!-- Dictar -->
         <Button
             android:id="@+id/btnDictar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="🎤 Dictar Descripción por Voz"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nota de Voz:"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="16dp">
-
-            <Button
-                android:id="@+id/btnGrabar"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="🔴 Grabar" />
-
-            <Button
-                android:id="@+id/btnReproducirGrabacion"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="▶ Reproducir"
-                android:layout_marginStart="8dp" />
-        </LinearLayout>
-
+        <!-- Botones de Acción -->
         <Button
             android:id="@+id/btnSalvarApunte"
             android:layout_width="match_parent"

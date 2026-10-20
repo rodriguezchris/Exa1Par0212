@@ -5,10 +5,13 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,11 +28,13 @@ import com.uth.exa1par0212.view.ApuntesActivity;
 import com.uth.exa1par0212.view.DictadoActivity;
 
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     private static final int DICTADO_REQUEST_CODE = 1001;
     private static final int REQUEST_RECORD_AUDIO_PERMISSION = 300;
 
+    private TextView tvTimer;
     private Spinner spinnerAsignatura;
     private Button btnAgregarAsignatura;
     private EditText etTema, etFecha, etDescripcion;
@@ -39,6 +44,20 @@ public class MainActivity extends AppCompatActivity {
     private AsignaturaDAO asignaturaDAO;
     private ApunteDAO apunteDAO;
     private boolean isRecording = false;
+
+    private Handler timerHandler = new Handler(Looper.getMainLooper());
+    private long startTime = 0L;
+    private final Runnable timerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            long millis = System.currentTimeMillis() - startTime;
+            int seconds = (int) (millis / 1000);
+            int minutes = seconds / 60;
+            seconds = seconds % 60;
+            tvTimer.setText(String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds));
+            timerHandler.postDelayed(this, 500);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         apunteDAO = new ApunteDAO(this);
         apunteDAO.open();
 
+        tvTimer = findViewById(R.id.tvTimer);
         spinnerAsignatura = findViewById(R.id.spinnerAsignatura);
         btnAgregarAsignatura = findViewById(R.id.btnAgregarAsignatura);
         etTema = findViewById(R.id.etTema);
@@ -110,6 +130,8 @@ public class MainActivity extends AppCompatActivity {
             if (path != null) {
                 isRecording = true;
                 btnGrabar.setText("⏹ Detener Grabación");
+                startTime = System.currentTimeMillis();
+                timerHandler.postDelayed(timerRunnable, 0);
                 Toast.makeText(this, "Grabando nota de voz...", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Error al iniciar grabación. Verifique el permiso de micrófono.", Toast.LENGTH_SHORT).show();
@@ -118,6 +140,8 @@ public class MainActivity extends AppCompatActivity {
             registroController.stopRecording();
             isRecording = false;
             btnGrabar.setText("🔴 Grabar");
+            timerHandler.removeCallbacks(timerRunnable);
+            tvTimer.setText("00:00");
             Toast.makeText(this, "Nota de voz guardada temporalmente", Toast.LENGTH_SHORT).show();
         }
     }
@@ -245,6 +269,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (timerHandler != null && timerRunnable != null) {
+            timerHandler.removeCallbacks(timerRunnable);
+        }
         if (registroController != null) {
             registroController.stopPlayback();
         }
