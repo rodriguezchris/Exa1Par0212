@@ -46,12 +46,12 @@
                 android:id="@+id/btnGrabar"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                app:cornerRadius="40dp"
                 android:backgroundTint="#E53935"
                 android:gravity="center"
-                android:text="🎙️\nGrabar"
+                android:text="Grabar"
+                android:textColor="@android:color/white"
                 android:textSize="11sp"
-                android:textColor="@android:color/white" />
+                app:cornerRadius="40dp" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReproducirGrabacion"
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tema (Sin símbolos):"
+            android:text="Tema:"
             android:textStyle="bold" />
 
         <EditText
